@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+
+
+{% block body %}
+
+<div class='container'>
+
+
+<h3>Search Results:</h3>
+        
+        {% for post in allposts  %}
+        
+        
+        <div class='container my-2'>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2" style="color:deeppink">Written By:{{post.author}}</strong>
+                                <h3 class="mb-0"> <a href="/blog/{{post.slug}}"><div class='preview' style="font-style: oblique; color:blue">{{post.title|truncatechars:60}}</div></a></h3>
+                                <div class="mb-1 text-muted">
+                                    <a href="https://www.timeanddate.com/worldclock/" style="font-style: oblique; color:red;">{{post.timestamp}}</a>
+                                </div>
+                                <p class="card-text mb-auto">
+                                    <div class="preview">{{post.content|truncatechars:70}}</div>
+                                </p>
+                                <div>
+                                    <a class="btn btn-outline-primary" href="/blog/{{post.slug}}">Continue Reading</a>
+                                </div>
+                            </div>
+                            <div class="col-auto d-none d-lg-block py-4">
+                                <img src="{{post.image}}" style="height: 200px; width: 200px;">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <b>Your search -</b> <b style="color: darkred;">{{query}}</b>- did not match any documents.<br>
+        Suggestions:
+        <br>
+        <ul>
+        <li>Make sure all words are spelled correctly</li>
+        <li>Try other words.</li>
+        <li>Try using simpler words.</li>
+        </ul>
+        
+        {% endfor %}
+</div>
+{% endblock body %}
+
+

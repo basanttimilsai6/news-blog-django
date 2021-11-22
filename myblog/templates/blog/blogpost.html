@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}blogpost{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block body %}
+
+<div class="container blog-post">
+             <h2 class="blog-post-title">{{Post.title}}</h2>
+             <p class="blog-post-meta">{{Post.timestamp}}<a style="color: deeppink;">Created By:{{Post.author}}</a></p>
+             
+            <img class="my-2" src='{{Post.image}}' style="width: 800px; height: 400px;">
+            
+            <p>
+                {{Post.content}}
+            </p>
+
+
+</div>
+
+{% endblock body %}
+
+
